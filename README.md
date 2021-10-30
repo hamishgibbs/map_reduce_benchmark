@@ -26,7 +26,7 @@ Data will be in user-specific `.csv` files where each file is named for the user
 
 ### Data generation
 
-To create the example dataset - run `datagen.py`.
+To create the example dataset - run [`datagen.py`](https://github.com/hamishgibbs/map_reduce_benchmark/blob/main/datagen.py).
 
 ```shell
 python datagen.py
