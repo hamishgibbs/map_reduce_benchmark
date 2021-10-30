@@ -6,6 +6,7 @@ fn main() {
 
 }
 
+/// Combine map step for all friends of all users.
 pub fn combine(hvec: Vec<HashMap<Vec<i32>, Vec<i32>>>) -> HashMap<Vec<i32>, Vec<Vec<i32>>> {
 
     let mut map_combined: HashMap<Vec<i32>, Vec<Vec<i32>>> = HashMap::new();

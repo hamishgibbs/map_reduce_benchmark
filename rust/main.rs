@@ -9,7 +9,6 @@ mod combine;
 fn main() {
     let paths = fs::read_dir("./data").unwrap();
 
-    // A hash map to store raw inputs of user & friend - could implement this as a type later
     let mut user_friends = Vec::new();
 
     for path in paths {
@@ -26,31 +25,22 @@ fn main() {
 
     let mut all_maps = Vec::new();
 
-    // map this key value store
     for user in user_friends {
         all_maps.push(map(user));
     }
-    //println!("{:?}", all_maps);
 
     let combined_map = combine::combine(all_maps);
 
-    // combined maps should have 2 entried per vector
-    // because when a is a friend of b, b must be a friend of a
+    let mut res = Vec::new();
 
     for (k, v) in combined_map.iter() {
-        let res = reduce(k.to_vec(), v.to_vec());
-        println!("{:?}", res)
+        let k_res = reduce(k.to_vec(), v.to_vec());
+        res.push(k_res)
     }
-    // combine
-
-    // reduce
-
-
-    // for each file - map it
-
-    //read_file(paths.next());
+    println!("{:?}", res)
 }
 
+/// Calculate the intersection of the friend sets of pairs of friends
 fn reduce(k: Vec<i32>, friends: Vec<Vec<i32>>) -> (Vec<i32>, usize) {
 
     if friends.clone().len() == 1 {
@@ -58,12 +48,13 @@ fn reduce(k: Vec<i32>, friends: Vec<Vec<i32>>) -> (Vec<i32>, usize) {
     } else {
         let s1: HashSet<i32> = friends[0].clone().into_iter().collect();
         let s2: HashSet<i32> = friends[1].clone().into_iter().collect();
-        let mut intersection = s1.intersection(&s2);
+        let intersection = s1.intersection(&s2);
         return (k, intersection.count())
     }
 
 }
 
+/// Map friends of users to friends of pairs of users
 fn map(user: (i32, Vec<i32>)) -> HashMap<Vec<i32>, Vec<i32>> {
     let mut user_map = HashMap::new();
     for friend in user.1.clone() {
@@ -74,6 +65,7 @@ fn map(user: (i32, Vec<i32>)) -> HashMap<Vec<i32>, Vec<i32>> {
     return user_map
 }
 
+/// Read and parse csv files to a string
 fn read_file(path: &String) -> Vec<i32> {
 
     let mut file = File::open(&path).expect("Can't open file.");
@@ -83,7 +75,6 @@ fn read_file(path: &String) -> Vec<i32> {
 
     let mut friends = vec![];
 
-    // fill map value with vector of friends
     for s in split {
         friends.push(s.clone().parse::<i32>().unwrap())
     }
