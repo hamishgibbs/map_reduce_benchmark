@@ -23,14 +23,17 @@ else:
 print(f"Writing example data for {N} users.")
 for i in range(1, N):
 
+    # Define total number of friends
     n_friends = 100
     sample_range = [i - int(n_friends / 2), (i + int(n_friends / 2)) % N]
 
+    # Sample 100 friends
     friends = random.sample(range(min(sample_range), max(sample_range)),
                             n_friends)
 
-    # print(f"{i}: {friends}")
-
+    # Write all friends to a names csv file
     with open(os.getcwd() + "/data/" + str(i) + ".csv", "w") as f:
 
         f.write("\n".join([str(x) for x in friends]))
+
+print("Done.")
