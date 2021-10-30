@@ -36,7 +36,7 @@ python datagen.py
 
 ### Map
 
-Map reduce definition: *the map step performs filtering and sorting of input data.*
+*The map step performs filtering and sorting of input data.*
 
 In this example the map function will take a user `.csv` file and create a key, value pair:
 
@@ -55,7 +55,7 @@ The output of the map function will be grouped by key so that a key now contains
 
 ### Reduce
 
-Map reduce definition: *the reduce step performs an aggregation operation.*
+*The reduce step performs an aggregation operation.*
 
 The reduce function will return the original key and the length of the intersection of the elements of the vectors of friends.
 
