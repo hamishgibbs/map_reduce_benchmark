@@ -40,31 +40,6 @@ fn main() {
     println!("{:?}", res)
 }
 
-/// Calculate the intersection of the friend sets of pairs of friends
-fn reduce(k: Vec<i32>, friends: Vec<Vec<i32>>) -> (Vec<i32>, usize) {
-
-    if friends.clone().len() == 1 {
-        return (k, 0);
-    } else {
-        let s1: HashSet<i32> = friends[0].clone().into_iter().collect();
-        let s2: HashSet<i32> = friends[1].clone().into_iter().collect();
-        let intersection = s1.intersection(&s2);
-        return (k, intersection.count())
-    }
-
-}
-
-/// Map friends of users to friends of pairs of users
-fn map(user: (i32, Vec<i32>)) -> HashMap<Vec<i32>, Vec<i32>> {
-    let mut user_map = HashMap::new();
-    for friend in user.1.clone() {
-        let mut key = vec![user.0, friend];
-        key.sort();
-        user_map.insert(key, user.1.clone());
-    }
-    return user_map
-}
-
 /// Read and parse csv files to an array of friends
 fn read_file(path: &String) -> Vec<i32> {
 
@@ -79,4 +54,29 @@ fn read_file(path: &String) -> Vec<i32> {
         friends.push(s.clone().parse::<i32>().unwrap())
     }
     return friends
+}
+
+/// Map friends of users to friends of pairs of users
+fn map(user: (i32, Vec<i32>)) -> HashMap<Vec<i32>, Vec<i32>> {
+    let mut user_map = HashMap::new();
+    for friend in user.1.clone() {
+        let mut key = vec![user.0, friend];
+        key.sort();
+        user_map.insert(key, user.1.clone());
+    }
+    return user_map
+}
+
+/// Calculate the intersection of the friend sets of pairs of friends
+fn reduce(k: Vec<i32>, friends: Vec<Vec<i32>>) -> (Vec<i32>, usize) {
+
+    if friends.clone().len() == 1 {
+        return (k, 0);
+    } else {
+        let s1: HashSet<i32> = friends[0].clone().into_iter().collect();
+        let s2: HashSet<i32> = friends[1].clone().into_iter().collect();
+        let intersection = s1.intersection(&s2);
+        return (k, intersection.count())
+    }
+
 }
