@@ -16,9 +16,9 @@ Find the number of shared "friend" connections between individuals in a social n
 
 ### Data format
 
-We will create a dataset for a set of users F represented by integers 1...N where each user has a random set of friends f within F. For this example each user will have 100 friends.
+We will create a dataset for a set of users `F` represented by integers `1...N` where each user has a random set of friends `f` within `F`. For this example each user will have 100 friends.
 
-Real world social networks exhibit "clustering" of connections (all users do not have equal probabilities of being friends with one another). To simulate this, we will draw friend connections from the 1000 nearest users to a given user. i.e. for user f_i the set of possible friends will be a set f of integers between f_i - 500...f_i + 500. We will do something different for the first and last groups of 500 users.
+Real world social networks exhibit "clustering" of connections (all users do not have equal probabilities of being friends with one another). To simulate this, we will draw friend connections from the 100 nearest users to a given user. i.e. for user `f_i` the set of possible friends will be a set `f` of integers between `f_i - 500...f_i + 500`. We will do something different for the first and last groups of 500 users.
 
 ### Data structure
 
