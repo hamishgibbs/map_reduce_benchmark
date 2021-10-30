@@ -65,7 +65,7 @@ fn map(user: (i32, Vec<i32>)) -> HashMap<Vec<i32>, Vec<i32>> {
     return user_map
 }
 
-/// Read and parse csv files to a string
+/// Read and parse csv files to an array of friends
 fn read_file(path: &String) -> Vec<i32> {
 
     let mut file = File::open(&path).expect("Can't open file.");
