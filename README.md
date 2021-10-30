@@ -65,5 +65,5 @@ rustc rust/main.rs && ./main
 
 ## Sources:
 
-[The original problem.](https://stackoverflow.com/questions/12375761/good-mapreduce-examples)
-[Map Reduce overview.](https://en.wikipedia.org/wiki/MapReduce)
+[The original problem.](https://stackoverflow.com/questions/12375761/good-mapreduce-examples)  
+[Map Reduce overview.](https://en.wikipedia.org/wiki/MapReduce)  
