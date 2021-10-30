@@ -40,8 +40,8 @@ python datagen.py
 
 In this example the map function will take a user `.csv` file and create a key, value pair:
 
-    *key: sorted list of the user and one friend within f.*  
-    *value: vector of friends f.*  
+  * key: sorted list of the user and one friend within f.
+  * value: vector of friends f.
 
 For each f_i in f.
 
