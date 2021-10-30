@@ -45,8 +45,6 @@ In this example the map function will take a user `.csv` file and create a key, 
 
 *Note: friendships are an undirected graph (if A -> B, B -> A). Sorting the key will make keys the same for the same pairs of users: for A -> B, key = (A, B) and for B -> A, key = (A, B).*
 
-*Question: Can this be done in parallel? - yes this can. The combination step, don't think so.*
-
 ### Combination
 
 The output of the map function will be grouped by key so that a key now contains a vector of friend vectors for a pair of friends.
