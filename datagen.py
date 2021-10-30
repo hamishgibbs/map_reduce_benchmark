@@ -10,8 +10,6 @@ gb = bits / 858993459
 
 print(f"Estimated size (GB): {gb}")
 
-# add an are you sure? here.
-
 # if data directory doesn't exist, create it
 if os.path.exists(os.getcwd() + "/data"):
     # if data directory contains files, delete them
