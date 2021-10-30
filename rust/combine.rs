@@ -1,37 +1,24 @@
 use std::collections::HashMap;
+use std::io;
+use std::collections::hash_map::Entry;
 
 fn main() {
-    // combine two hashmaps with the same keys
-    let mut h1 = HashMap::new();
-    let mut h2 = HashMap::new();
-
-    h1.insert(vec![1, 3], vec![1, 2, 3]);
-    h1.insert(vec![1, 2], vec![1, 2, 3]);
-    h2.insert(vec![1, 2], vec![2, 3, 4]);
-    h2.insert(vec![3, 4], vec![2, 3, 4]);
-
-    println!("{:?}", h1);
-    println!("{:?}", h2);
-
-    map_combine(h1, h2)
 
 }
 
-// for combine - create a map h3 with all unique keys of h1 and h2 and empty tuples
-// for each map h1 and h2, insert value into tuple for each key in h3
-fn map_combine(h1: HashMap<Vec<i32>, Vec<i32>>, h2: HashMap<Vec<i32>, Vec<i32>>) {
+pub fn combine(hvec: Vec<HashMap<Vec<i32>, Vec<i32>>>) -> HashMap<Vec<i32>, Vec<Vec<i32>>> {
 
-    let mut h3 = h1.clone();
+    let mut map_combined: HashMap<Vec<i32>, Vec<Vec<i32>>> = HashMap::new();
 
-    // this will create a tuple with all the right keys but the wrong (overwritten values)
-    h3.extend(h2);
-
-    let mut h4: HashMap<Vec<i32>, (Vec<i32>, Vec<i32>)> = HashMap::new();
-
-    for (k, _v) in h3.clone().iter() {
-        //println!("{:?}", h1[k]);
-        h4.insert(k.to_vec(), (h1[k], h2[k]));
+    for h in hvec {
+        for (k, v) in h.iter() {
+            match map_combined.entry(k.to_vec()) {
+                Entry::Vacant(e) => { e.insert(vec![v.to_vec()]);}
+                Entry::Occupied(mut e) => { e.get_mut().push(v.to_vec());}
+            }
+        }
     }
-    println!("{:?}", h4);
+
+    map_combined
 
 }

@@ -24,10 +24,12 @@ print(f"Writing example data for {N} users.")
 for i in range(1, N):
 
     n_friends = 100
-    sample_range = [i, (i + n_friends) % N]
+    sample_range = [i - int(n_friends / 2), (i + int(n_friends / 2)) % N]
 
     friends = random.sample(range(min(sample_range), max(sample_range)),
                             n_friends)
+
+    # print(f"{i}: {friends}")
 
     with open(os.getcwd() + "/data/" + str(i) + ".csv", "w") as f:
 

@@ -24,6 +24,12 @@ Data will be in user-specific `.csv` files where each file is named for the user
 
 To calculate the size of an example dataset and (optionally) create one - run `datagen.py`.
 
+**Bug**
+
+There is an issue with the creation of the data - nobody has any shared friends with anyone else. I.e. with current construction of example data - there are no pairs of shared friendships (A is in f of B and B is in f of A. This is a requirement of the training data)
+
+So - need to think up a new way to do that. Hmmm....
+
 ## The Solution
 
 **Map**
