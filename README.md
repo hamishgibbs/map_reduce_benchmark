@@ -38,12 +38,10 @@ python datagen.py
 
 *The map step performs filtering and sorting of input data.*
 
-In this example the map function will take a user `.csv` file and create a key, value pair:
+In this example the map function will take a user `.csv` file and create a key, value pair for each `f_i` in `f`:
 
   * key: sorted list of the user and one friend within f.
   * value: vector of friends f.
-
-For each f_i in f.
 
 *Note: friendships are an undirected graph (if A -> B, B -> A). Sorting the key will make keys the same for the same pairs of users: for A -> B, key = (A, B) and for B -> A, key = (A, B).*
 
